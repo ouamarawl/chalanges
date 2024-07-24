@@ -8,34 +8,46 @@
   <body>
     <h1 id="w"></h1>
     <script>
-      function monais(d) {
-        var p = [1000, 5, 2000, 20, 50, 100, 500, 200, 2, 10];
-        var t = [];
-        while (d > 0) {
-          var max = 0;
-          for (var i = 0; i < p.length; i++) {
-            if (max < p[i] && p[i] <= d) {
-              max = p[i];
-            }
-          }
-
-          if (max > 0) {
-            d -= max;
-            t.push(max);
-          } else {
-             // Si aucune valeur valide trouvée, arrêter la boucle
-             break;
-           }
-        }
-
-        return t;
-      }
+      const livres = [
+  {
+    titre: "Le Seigneur des Anneaux",
+    auteur: "J.R.R. Tolkien",
+    pages: 1216
+  },
+  {
+    titre: "1984",
+    auteur: "George Orwell",
+    pages: 328
+  },
+  {
+    titre: "L'Alchimiste",
+    auteur: "Paulo Coelho",
+    pages: 208
+  },
+  {
+    titre: "Les Misérables",
+    auteur: "Victor Hugo",
+    pages: 1463
+  },
+  {
+    titre: "To Kill a Mockingbird",
+    auteur: "Harper Lee",
+    pages: 281
+  }
+];
+      
+function moyenne_page(livres){
      
+    let totale_page = livres.map(livre=>livre.pages).reduce((x ,y)=>x+y ,0);
+    let moyenne= totale_page/livres.length;
+    return moyenne;   
+}
 
-      var d = 375;
-      let monai = monais(d);
+var m=moyenne_page(livres);
 
-      document.getElementById("w").innerHTML = monai.join(", ");
+document.getElementById("w").innerHTML = m;
+
+
     </script>
   </body>
 </html>
