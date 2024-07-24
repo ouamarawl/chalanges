@@ -4,38 +4,53 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
+    <link rel="stylesheet" href="challanges.css" />
   </head>
   <body>
-    <h1 id="w"></h1>
-    <script>
-      function monais(d) {
-        var p = [1000, 5, 2000, 20, 50, 100, 500, 200, 2, 10];
-        var t = [];
-        while (d > 0) {
-          var max = 0;
-          for (var i = 0; i < p.length; i++) {
-            if (max < p[i] && p[i] <= d) {
-              max = p[i];
-            }
-          }
+    <section class="container">
+      <div class="heading">
+        <img
+          class="heading__img"
+          src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/756881/laptop.svg"
+        />
+        <h1 class="heading__title">To-Do List</h1>
+      </div>
+      <form class="form" id="todo-form">
+        <div>
+          <label class="form__label" for="todo">~ Today I need to ~</label>
+          <input id="inp" class="form__input"
+               type="text" 
+               name="to-do"
+               size="30"
+               required>
+          <button class="button" id="btn" type="submit" onclick="marquer()">      
+           <span>Submit</span></button>
+          </div>
+      </form>
+      <div>
+        <ul class="toDoList" id="toDoList"></ul>
+      </div>
+    </section>
 
-          if (max > 0) {
-            d -= max;
-            t.push(max);
-          } else {
-             // Si aucune valeur valide trouvée, arrêter la boucle
-             break;
-           }
+    <script>        
+      function marquer() {
+        let inpute = document.getElementById("inp").value;
+        if (inpute !== "") {
+          let ulElement = document.getElementById("toDoList");
+          let liElement = document.createElement("li");
+          liElement.textContent = inpute;
+          ulElement.appendChild(liElement);
+          document.getElementById("inp").value = "";
         }
-
-        return t;
       }
-     
-
-      var d = 375;
-      let monai = monais(d);
-
-      document.getElementById("w").innerHTML = monai.join(", ");
     </script>
   </body>
 </html>
+
+
+
+
+
+
+
+
